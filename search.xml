@@ -5,9 +5,27 @@
     <entry>
         <title><![CDATA[hexo setup]]></title>
         <url>http://ethanlxgu.com/2017/03/09/hexo-setup/</url>
-        <content type="html"><![CDATA[<p>This is a test blog.<br>This is very useful.</p>
-<h1 id="From-this-tutorial-I-hope-I-can-learn-more"><a href="#From-this-tutorial-I-hope-I-can-learn-more" class="headerlink" title="From this tutorial, I hope I can learn more."></a>From this tutorial, I hope I can learn more.</h1>]]></content>
+        <content type="html"><![CDATA[<h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><blockquote>
+<p>{ [Error: Cannot find module ‘./build/Release/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’ }<br>{ [Error: Cannot find module ‘./build/default/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’ }<br>{ [Error: Cannot find module ‘./build/Debug/DTraceProviderBindings’] code: ‘MODULE_NOT_FOUND’ }<br>Try to install with –no-optional option.</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>$ npm install hexo –no-optional</p>
+</blockquote>
+]]></content>
         
+        <categories>
+            
+            <category> Hexo </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
         
     </entry>
     
@@ -27,6 +45,8 @@
         
         
     </entry>
+    
+    
     
     
     

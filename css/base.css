@@ -321,6 +321,10 @@ html {
   #sidebar {
     display: none;
   }
+  #wrap #demo .demo-list-item {
+    width: 100%;
+    margin: 20px auto;
+  }
   #wrap #post #post-body iframe {
     width: 98%;
   }
@@ -350,7 +354,9 @@ a,
 #footer .copyright-links,
 .social > a,
 .article-excerpt-wrap,
-#donate-wrap {
+#donate-wrap,
+.demo-list-item,
+#about a {
   -webkit-transition: all 500ms ease;
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
@@ -1876,6 +1882,13 @@ a,
   -ms-transform: translate(0.2rem, 0);
   -o-transform: translate(0.2rem, 0);
   transform: translate(0.2rem, 0);
+}
+.demo-list-item:hover {
+  -webkit-transform: translate(0, -0.1rem);
+  -moz-transform: translate(0, -0.1rem);
+  -ms-transform: translate(0, -0.1rem);
+  -o-transform: translate(0, -0.1rem);
+  transform: translate(0, -0.1rem);
 }
 header {
   box-sizing: border-box;
