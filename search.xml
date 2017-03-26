@@ -3,6 +3,212 @@
     
     
     <entry>
+        <title><![CDATA[OAuth]]></title>
+        <url>http://ethanlxgu.com/2017/03/22/OAuth/</url>
+        <content type="html"><![CDATA[<ol>
+<li>OAuth is short for Open Authorization  是OAuth的简写</li>
+</ol>
+]]></content>
+        
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[springboot-learning]]></title>
+        <url>http://ethanlxgu.com/2017/03/18/springboot-learning/</url>
+        <content type="html"><![CDATA[<ol>
+<li>@configurationProperties(prefix = “”) //get configuration from properties<br>can write a class for the value in properties and reduce @value</li>
+<li>java jar (jar package) –spring.profiles.active=prod switch properties</li>
+<li>annotation:<br>3.1 @controller<br>@restcontroller = @responsebody + @controller<br>3.2 @PathVariable: get url data    /hello/20<br> @RequestParam: get request param /hello?id=20<br> @GetMapping: 组合注解</li>
+<li>jpa: show-sql: show sql in console<pre><code>ddl-auto: create: create a table everytime and delete data
+            update: create a table if not, but if data, do not drop this table
+</code></pre></li>
+<li><!--
+         devtools可以实现页面热部署（即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache=false来实现），
+         实现类文件热部署（类文件修改后不会立即生效），实现对属性文件的热部署。
+         即devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的
+      -->
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+    &lt;!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 --&gt;
+&lt;/dependency&gt;
+
+&lt;build&gt;
+&lt;plugins&gt;
+    &lt;plugin&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+            &lt;fork&gt;true&lt;/fork&gt;
+        &lt;/configuration&gt;
+    &lt;/plugin&gt;
+&lt;/plugins&gt;
+</code></pre><p></p>
+</li>
+<li>@Transactional: 事物管理</li>
+<li>validation: @Min + @valid, BindingResult show results</li>
+<li>aop: @Aspect aop pom.xml<br> @Pointcut: define aspect<br> @Before<br> @After</li>
+<li><p>Logger: slf4j based on logback<br> will show the time, package, class info by log</p>
+</li>
+<li><p>Get http info<br>@Before(value = “log()”)<br>public void logBefore(JoinPoint joinPoint) {</p>
+<pre><code>ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+HttpServletRequest request = attributes.getRequest();
+
+// url
+logger.info(&quot;url={}&quot;, request.getRequestURL());
+
+//method
+logger.info(&quot;method={}&quot;, request.getMethod());
+
+//ip
+logger.info(&quot;ip={}&quot;, request.getRemoteAddr());
+
+//类方法
+logger.info(&quot;class_method={}&quot;, joinPoint.getSignature().getDeclaringTypeName() + &quot;.&quot; + joinPoint.getSignature().getName());
+
+//参数
+logger.info(&quot;args={}&quot;, joinPoint.getArgs());
+</code></pre><p>}</p>
+<p>@AfterReturning(returning = “object”, pointcut = “log()”)<br>public void doAfterReturning(Object object) {</p>
+<pre><code>logger.info(&quot;response={}&quot;, object.toString());
+</code></pre><p>}<br>print the info ater reture</p>
+</li>
+<li><p>Exception</p>
+</li>
+<li><p>Test:<br>@RunWith(SpringRunner.class)<br>@SpringBootTest: start the whole springboot project<br>AutoConfigureMockMvc:<br>@Autowired<br>private MockMvc mockMvc;</p>
+<p>@Test<br>public void girlList() throws Exception {</p>
+<pre><code>mockMvc.perform(MockMvcRequestBuilders.get(&quot;/girls&quot;))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+</code></pre><p>}</p>
+<p>can test the get/post and real operation</p>
+<p>mvn clean package will run test default<br>mvn clean package -Dmaven.test.skip=true will skip test</p>
+</li>
+</ol>
+]]></content>
+        
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[clojure-learning]]></title>
+        <url>http://ethanlxgu.com/2017/03/14/clojure-learning/</url>
+        <content type="html"><![CDATA[<ol>
+<li>brew install leiningen</li>
+<li>keyword: :start<br>eg: :jam</li>
+<li>list” ‘start  ,or space to seperate them<br> vector: [] (nth vector position) 访问向量中一个给定索引的元素<br> conj: add to the back for vector and add to the front for the list<br> map: {} assoc: bind new key-value<br> dissoc<br> merge<br> set: #{}</li>
+<li>cons</li>
+</ol>
+]]></content>
+        
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[learning-plan]]></title>
+        <url>http://ethanlxgu.com/2017/03/13/learning-plan/</url>
+        <content type="html"><![CDATA[<ol>
+<li>javascript</li>
+<li>babel</li>
+<li>netty</li>
+<li>bash</li>
+</ol>
+]]></content>
+        
+        <categories>
+            
+            <category> Plan </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[vue2.0-learning]]></title>
+        <url>http://ethanlxgu.com/2017/03/12/vue2-0-learning/</url>
+        <content type="html"><![CDATA[<ol>
+<li>src=”image” not working, should use v-bind:src=”image”<br><img v-bind:src="'img/' + item.productImage"> 拼接字符串或者使用计算变量</li>
+<li>v-bind:class=”” is not different with others, we should use [] or {}</li>
+<li>if (typeof item.checked == ‘undefined’) {<pre><code>    Vue.set(item, &quot;checked&quot;, true);
+}
+</code></pre> if data is not registed, we can use set method to registe one</li>
+<li>v-id and v-show</li>
+</ol>
+]]></content>
+        
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[html]]></title>
+        <url>http://ethanlxgu.com/2017/03/12/html/</url>
+        <content type="html"><![CDATA[<ol>
+<li>问题：打开本地html文件时，报错如下<br>&lt; Cross origin requests are only supported for protocol schemes: http, data,chrome-extension, https, chrome-extension-resource.</li>
+</ol>
+<p>解决方法</p>
+<p> 方案一、 Google Chrome应用程序目标位置中添加  chrome.exe –allow-file-access-from-files  </p>
+<p>! 注意中间空格（chrome.exe  –allow-file-access-from-files）</p>
+<p>注意！！！   必须重新启动电脑，否则无效……若方案一还无效，继续执行方案二</p>
+<p>方案二、 使用cmd命令 传入浏览器启动参数 –allow-file-access-from-files</p>
+<p>第三步 用启动浏览器打开html文件即可. 若还出现上述问题，重启电脑，继续方案二</p>
+<p>Simple Node.js Solution</p>
+<p>1) install http-server: npm install http-server -g<br>2) run: http-server C:\location\to\app step 2 will out put like this</p>
+<p>Starting up http-server, serving ./<br>Available on:<br><a href="http://127.0.0.1:8080" target="_blank" rel="external">http://127.0.0.1:8080</a><br><a href="http://192.168.0.104:8080" target="_blank" rel="external">http://192.168.0.104:8080</a><br>Now you have a local server up and running. You can access your app through url provided by step 2</p>
+<p>&lt; Install NodeJS // Hint: If you’re on a Mac, you want to install and use Homebrew for this<br>Open your favorite terminal emulator<br>Install http-server by running: npm install http-server -g<br>Start http-server by running: http-server ‘path/to/your/angular/root/directory’ -o<br>That last command — specifically, the -o flag — should open a browser window at: localhost:8080</p>
+<ol>
+<li>not refresh code after updating, then disable cahce for Chrome</li>
+</ol>
+]]></content>
+        
+        <categories>
+            
+            <category> Html </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[mac-common-command]]></title>
+        <url>http://ethanlxgu.com/2017/03/12/mac-common-command/</url>
+        <content type="html"><![CDATA[<p>Chapter1: </p>
+<ol>
+<li>exit: exit the shell<br>Chapter2: Get help</li>
+<li>help[选项][命令]：查看内部Shell命令的帮助信息<br>-d：显示命令简短的主题描述<br>-s：显示命令简短的语法描述</li>
+<li>man[选项][名称]:显示在线手册<br>Chapter3: directory and file operaction<br>4.1 pwd: show current path<br>4.2 cd<br>4.3 ls: for folder: show all folder and file info, for file, show info<br>ls -Sl: show order by size<br>ls -lt: show order by modified time<br>-h: show file size readable<br>+r : reversed<br>4.4 dir[选项][文件]: list info of directory and file (not in mac)<br>4.5 dirs: show list of directory</li>
+<li>mv - move folder/file</li>
+</ol>
+]]></content>
+        
+        <categories>
+            
+            <category> Mac </category>
+            
+            <category> Command </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[SpringBoot]]></title>
+        <url>http://ethanlxgu.com/2017/03/12/SpringBoot/</url>
+        <content type="html"></content>
+        
+        <categories>
+            
+            <category> SpringBoot </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
         <title><![CDATA[hexo setup]]></title>
         <url>http://ethanlxgu.com/2017/03/09/hexo-setup/</url>
         <content type="html"><![CDATA[<h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><blockquote>

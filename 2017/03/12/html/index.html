@@ -22,7 +22,7 @@
 <meta name="verify" content=all />
     <!--Title-->
 
-<title>分类: Hexo | Ethan Blog</title>
+<title>html | Ethan Blog</title>
 
 <link rel="alternate" href="/atom.xml" title="Ethan Blog" type="application/atom+xml">
 
@@ -31,7 +31,7 @@
 
     
 <link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/archive.css">
+<link rel="stylesheet" href="/css/pages/post.css">
 <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
     <!--script-->
@@ -138,21 +138,28 @@
 
 
         <div id="main">
-    <div id="post-list">
-        <ul class="archives-post-list">
-            
-            <li class="post-items" _href="/2017/03/09/hexo-setup/">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="html">
                 
-                <p class="info">Hexo</p>
-                <h2 class="post-item-title">hexo setup</h2>
-                <div class="article-meta">
+                html
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Html</span>
+    </span>
     
     
     <span class="fa-wrap">
          <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            hexo
+            null
             
         </span>
     </span>
@@ -160,22 +167,106 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2017/03/09</span>
+        <span class="date-meta ">2017/03/12</span>
+    </span>
+    
+    <span  class=" fa-wrap">
+        <i class="fa fa-comment-o"></i>
+        <span id="comments-count" class="comments-meta disqus-comment-count ds-thread-count comments" data-disqus-url="http://ethanlxgu.com/2017/03/12/html/" data-thread-key="/2017/03/12/html/"
+           data-count-type="comments"></span>
     </span>
     
     
     
 </div>
 
-            </li>
             
-        </ul>
+            
+        </div>
+        
+        <div id="post-body">
+            <ol>
+<li>问题：打开本地html文件时，报错如下<br>&lt; Cross origin requests are only supported for protocol schemes: http, data,chrome-extension, https, chrome-extension-resource.</li>
+</ol>
+<p>解决方法</p>
+<p> 方案一、 Google Chrome应用程序目标位置中添加  chrome.exe –allow-file-access-from-files  </p>
+<p>! 注意中间空格（chrome.exe  –allow-file-access-from-files）</p>
+<p>注意！！！   必须重新启动电脑，否则无效……若方案一还无效，继续执行方案二</p>
+<p>方案二、 使用cmd命令 传入浏览器启动参数 –allow-file-access-from-files</p>
+<p>第三步 用启动浏览器打开html文件即可. 若还出现上述问题，重启电脑，继续方案二</p>
+<p>Simple Node.js Solution</p>
+<p>1) install http-server: npm install http-server -g<br>2) run: http-server C:\location\to\app step 2 will out put like this</p>
+<p>Starting up http-server, serving ./<br>Available on:<br><a href="http://127.0.0.1:8080" target="_blank" rel="external">http://127.0.0.1:8080</a><br><a href="http://192.168.0.104:8080" target="_blank" rel="external">http://192.168.0.104:8080</a><br>Now you have a local server up and running. You can access your app through url provided by step 2</p>
+<p>&lt; Install NodeJS // Hint: If you’re on a Mac, you want to install and use Homebrew for this<br>Open your favorite terminal emulator<br>Install http-server by running: npm install http-server -g<br>Start http-server by running: http-server ‘path/to/your/angular/root/directory’ -o<br>That last command — specifically, the -o flag — should open a browser window at: localhost:8080</p>
+<ol>
+<li>not refresh code after updating, then disable cahce for Chrome</li>
+</ol>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="http://example.com/author.jpg" alt="avatar"/>
+                
+                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>作者:
+                    
+                    <a href="/about.html">Ethan L X Gu</a>
+                </li>
+                <li>发表日期: <span>2017-03-12  10:07:11</span></li>
+                
+                <li>最后编辑日期: <span>2017-03-12  11:24:08</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                    <a href="/categories/Html/">Html</a>
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/2017/03/12/vue2-0-learning/" class="pre-post fa fa-caret-left">vue2.0-learning</a>
+        
+        
+        <a href="/2017/03/12/mac-common-command/" class="next-post fa">mac-common-command</a>
+        
     </div>
+    
+    <div id="comments">
+        
+
+
+
+    </div>
+    
 </div>
-
-
-
-
 
 
     </div>
@@ -211,6 +302,8 @@
     <ul id="tools">
     <li class="totop-btn fa fa-angle-up"></li>
     
+    <li class="toc-btn fa fa-list-ul"></li>
+    
     
 
     
@@ -230,6 +323,8 @@
         </div>
     </div>
 </div>
+
+    
 
 
     <script src="/js/highsong.js"></script>

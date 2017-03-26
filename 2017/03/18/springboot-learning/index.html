@@ -22,7 +22,7 @@
 <meta name="verify" content=all />
     <!--Title-->
 
-<title>分类: Hexo | Ethan Blog</title>
+<title>springboot-learning | Ethan Blog</title>
 
 <link rel="alternate" href="/atom.xml" title="Ethan Blog" type="application/atom+xml">
 
@@ -31,7 +31,7 @@
 
     
 <link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/archive.css">
+<link rel="stylesheet" href="/css/pages/post.css">
 <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
     <!--script-->
@@ -138,21 +138,28 @@
 
 
         <div id="main">
-    <div id="post-list">
-        <ul class="archives-post-list">
-            
-            <li class="post-items" _href="/2017/03/09/hexo-setup/">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="springboot-learning">
                 
-                <p class="info">Hexo</p>
-                <h2 class="post-item-title">hexo setup</h2>
-                <div class="article-meta">
+                springboot-learning
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>null</span>
+    </span>
     
     
     <span class="fa-wrap">
          <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            hexo
+            null
             
         </span>
     </span>
@@ -160,22 +167,158 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2017/03/09</span>
+        <span class="date-meta ">2017/03/18</span>
+    </span>
+    
+    <span  class=" fa-wrap">
+        <i class="fa fa-comment-o"></i>
+        <span id="comments-count" class="comments-meta disqus-comment-count ds-thread-count comments" data-disqus-url="http://ethanlxgu.com/2017/03/18/springboot-learning/" data-thread-key="/2017/03/18/springboot-learning/"
+           data-count-type="comments"></span>
     </span>
     
     
     
 </div>
 
-            </li>
             
-        </ul>
+            
+        </div>
+        
+        <div id="post-body">
+            <ol>
+<li>@configurationProperties(prefix = “”) //get configuration from properties<br>can write a class for the value in properties and reduce @value</li>
+<li>java jar (jar package) –spring.profiles.active=prod switch properties</li>
+<li>annotation:<br>3.1 @controller<br>@restcontroller = @responsebody + @controller<br>3.2 @PathVariable: get url data    /hello/20<br> @RequestParam: get request param /hello?id=20<br> @GetMapping: 组合注解</li>
+<li>jpa: show-sql: show sql in console<pre><code>ddl-auto: create: create a table everytime and delete data
+            update: create a table if not, but if data, do not drop this table
+</code></pre></li>
+<li><!--
+         devtools可以实现页面热部署（即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache=false来实现），
+         实现类文件热部署（类文件修改后不会立即生效），实现对属性文件的热部署。
+         即devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的
+      -->
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+    &lt;!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 --&gt;
+&lt;/dependency&gt;
+
+&lt;build&gt;
+&lt;plugins&gt;
+    &lt;plugin&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+            &lt;fork&gt;true&lt;/fork&gt;
+        &lt;/configuration&gt;
+    &lt;/plugin&gt;
+&lt;/plugins&gt;
+</code></pre><p></p>
+</li>
+<li>@Transactional: 事物管理</li>
+<li>validation: @Min + @valid, BindingResult show results</li>
+<li>aop: @Aspect aop pom.xml<br> @Pointcut: define aspect<br> @Before<br> @After</li>
+<li><p>Logger: slf4j based on logback<br> will show the time, package, class info by log</p>
+</li>
+<li><p>Get http info<br>@Before(value = “log()”)<br>public void logBefore(JoinPoint joinPoint) {</p>
+<pre><code>ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+HttpServletRequest request = attributes.getRequest();
+
+// url
+logger.info(&quot;url={}&quot;, request.getRequestURL());
+
+//method
+logger.info(&quot;method={}&quot;, request.getMethod());
+
+//ip
+logger.info(&quot;ip={}&quot;, request.getRemoteAddr());
+
+//类方法
+logger.info(&quot;class_method={}&quot;, joinPoint.getSignature().getDeclaringTypeName() + &quot;.&quot; + joinPoint.getSignature().getName());
+
+//参数
+logger.info(&quot;args={}&quot;, joinPoint.getArgs());
+</code></pre><p>}</p>
+<p>@AfterReturning(returning = “object”, pointcut = “log()”)<br>public void doAfterReturning(Object object) {</p>
+<pre><code>logger.info(&quot;response={}&quot;, object.toString());
+</code></pre><p>}<br>print the info ater reture</p>
+</li>
+<li><p>Exception</p>
+</li>
+<li><p>Test:<br>@RunWith(SpringRunner.class)<br>@SpringBootTest: start the whole springboot project<br>AutoConfigureMockMvc:<br>@Autowired<br>private MockMvc mockMvc;</p>
+<p>@Test<br>public void girlList() throws Exception {</p>
+<pre><code>mockMvc.perform(MockMvcRequestBuilders.get(&quot;/girls&quot;))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+</code></pre><p>}</p>
+<p>can test the get/post and real operation</p>
+<p>mvn clean package will run test default<br>mvn clean package -Dmaven.test.skip=true will skip test</p>
+</li>
+</ol>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="http://example.com/author.jpg" alt="avatar"/>
+                
+                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>作者:
+                    
+                    <a href="/about.html">Ethan L X Gu</a>
+                </li>
+                <li>发表日期: <span>2017-03-18  10:02:57</span></li>
+                
+                <li>最后编辑日期: <span>2017-03-21  08:00:13</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/2017/03/22/OAuth/" class="pre-post fa fa-caret-left">OAuth</a>
+        
+        
+        <a href="/2017/03/14/clojure-learning/" class="next-post fa">clojure-learning</a>
+        
     </div>
+    
+    <div id="comments">
+        
+
+
+
+    </div>
+    
 </div>
-
-
-
-
 
 
     </div>
@@ -211,6 +354,8 @@
     <ul id="tools">
     <li class="totop-btn fa fa-angle-up"></li>
     
+    <li class="toc-btn fa fa-list-ul"></li>
+    
     
 
     
@@ -230,6 +375,8 @@
         </div>
     </div>
 </div>
+
+    
 
 
     <script src="/js/highsong.js"></script>
